@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import service from '../../appwrite/appwriteConfig'
-import { Container } from '../index'
 
 
 const UploadForm = ({ post }) => {
@@ -17,6 +16,8 @@ const UploadForm = ({ post }) => {
     const [status, setStatus] = useState("active")
     // setStatus(postdata?.status || "active")
     const [imgsrc, setimgsrc] = useState("")
+
+    
     const setVal = async () => {
         if (post) {
             setTitle(post.title || "")
@@ -26,6 +27,9 @@ const UploadForm = ({ post }) => {
             console.log(post)
         }
     }
+
+    
+    
 
 
     const navigate = useNavigate()
@@ -91,7 +95,7 @@ const UploadForm = ({ post }) => {
         if (!post) {
             if (img) {
                 await service.createPost({
-                    title, slug, content, featuredimg: img, status, userid: userData.$id
+                    title, slug, content, featuredimg: img, status, userid: userData.$id,likes:0
                 })
             }
 

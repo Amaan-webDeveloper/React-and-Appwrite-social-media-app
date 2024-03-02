@@ -32,7 +32,7 @@ export class Service {
     }
   }
 
-  async updatePost(slug, { title, content, featuredimg, status }) {
+  async updatePost(slug, { title, content, featuredimg, status,likes }) {
     try {
       return await this.dataBases.updateDocument(
         config.appwriteDataBaseId,
@@ -43,6 +43,7 @@ export class Service {
           content,
           featuredimg,
           status,
+          likes,
         }
       );
     } catch (error) {
